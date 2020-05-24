@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController, Storyboardable {
+final class RootViewController: UIViewController, Storyboardable {
     
     // MARK: - Outlets
     
@@ -18,52 +18,43 @@ class RootViewController: UIViewController, Storyboardable {
             tableView.dataSource = self
             tableView.rowHeight = UITableView.automaticDimension
             tableView.estimatedRowHeight = 50
-            tableView.register(UINib(nibName: CommentTableViewCell.nibName, bundle: .main), forCellReuseIdentifier: CommentTableViewCell.reuseIdentifier)
+            let cellNib = UINib(nibName: CommentTableViewCell.nibName, bundle: .main)
+            tableView.register(cellNib, forCellReuseIdentifier: CommentTableViewCell.reuseIdentifier)
         }
     }
+
     // MARK: - Properties
     var viewModel: RootViewControllerViewModel?
-    
-    
-    // MARK: - View
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    
+
     // MARK: - Setup
     func setupView() {
         viewModel?.updateView = {
             self.tableView.reloadData()
         }
     }
-    
 }
+
 // MARK: - TableView
-extension RootViewController: UITableViewDelegate , UITableViewDataSource{
-    
-    
+extension RootViewController: UITableViewDelegate, UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return viewModel?.numberOfRows ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.reuseIdentifier, for: indexPath) as? CommentTableViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.reuseIdentifier, for: indexPath) as? CommentTableViewCell else {
             fatalError("can't be true")
         }
         
-        guard let viewModel = viewModel else {fatalError()}
+        guard let viewModel = viewModel else {
+            fatalError("ViewModel is missing")
+        }
         cell.config(with: viewModel.commentFor(indexPath: indexPath))
         
         return cell
     }
-    
-    
-    
 }

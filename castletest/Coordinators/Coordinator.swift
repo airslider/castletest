@@ -18,7 +18,5 @@ class Coordinator: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Methods
     
-    func start() {}
-    
-  
+    func start() { }
 }

@@ -8,30 +8,18 @@
 
 import UIKit
 
-class AppCoordinator : Coordinator{
+final class AppCoordinator: Coordinator {
     
     // MARK: - Properties
     let rootViewController: RootViewController = RootViewController.instantiate()
     
-    
-    // MARK: - Initialization
-    override init() {
-        super.init()
-              
-    }
-    
     // MARK: - Methods
     override func start() {
-        
         let viewModel = RootViewControllerViewModel()
         
         rootViewController.viewModel = viewModel
         rootViewController.setupView()
         
         viewModel.start()
-        
-        
     }
-    
-    
 }

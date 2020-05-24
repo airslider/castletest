@@ -8,28 +8,21 @@
 
 import UIKit
 
-class CommentTableViewCell: UITableViewCell {
+final class CommentTableViewCell: UITableViewCell {
     
     // MARK: - Type Properties
     static let reuseIdentifier = "CommentTableViewCell"
     static let nibName = "CommentTableViewCell"
     
     // MARK: - Outlets
-    @IBOutlet weak var bodyLabel: UILabel!
-    @IBOutlet weak var symbolsCountLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    
-    // MARK: - Initialization
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var symbolsCountLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
     
     // MARK: - Configure
     
     func config(with comment: Comment) {
-        
         nameLabel.text = "Name: \(comment.name)"
         emailLabel.text = "Email: \(comment.email)"
         
@@ -39,12 +32,10 @@ class CommentTableViewCell: UITableViewCell {
             symbolsCountLabel.isHidden = false
             symbolsCountLabel.text = "Total symbols count: \(comment.body.count)"
         }
-        else
-        {
+        else {
             bodyLabel.text = "Comment: \(comment.body)"
             symbolsCountLabel.isHidden = true
             symbolsCountLabel.text = ""
         }
-        
     }
 }

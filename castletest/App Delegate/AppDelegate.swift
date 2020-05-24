@@ -9,30 +9,24 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Properties
     var window: UIWindow?
     private let appCoordinator = AppCoordinator()
 
     // MARK: - AppLifeCicle
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Configure Window
         window = UIWindow(frame: UIScreen.main.bounds)
-        
         window?.rootViewController = appCoordinator.rootViewController
-        
         window?.makeKeyAndVisible()
         
         // Config Coordinator
         appCoordinator.start()
-        
-        
+
         return true
     }
-
-  
-
 }
-

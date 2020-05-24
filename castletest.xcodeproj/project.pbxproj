@@ -77,7 +77,6 @@
 				9DD93238247882580050F33B /* App Delegate */,
 				9DD9323C247882D20050F33B /* Root View Controller */,
 				9DD9323E247883310050F33B /* Coordinators */,
-				9DD9323D247882D80050F33B /* Managers */,
 				9DD93239247882630050F33B /* Storyboards */,
 				9DD93245247885420050F33B /* Protocols */,
 				9DD9324C24788C0A0050F33B /* Models */,
@@ -130,13 +129,6 @@
 				9DD9324F24788D000050F33B /* View Model */,
 			);
 			path = "Root View Controller";
-			sourceTree = "<group>";
-		};
-		9DD9323D247882D80050F33B /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		9DD9323E247883310050F33B /* Coordinators */ = {
